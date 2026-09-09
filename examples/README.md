@@ -1,5 +1,7 @@
-# Examples
+# Example
 
-Run `tissuemapper-graph create-demo --output runs/demo/data.h5ad` to generate a complete synthetic AnnData tutorial with three section-disjoint partitions. The README gives tested commands for training both coordinates and inference; the training guide also covers the separate classifier.
+The [README](../README.md#try-it) trains a coordinate model on synthetic data and predicts on the same AnnData file.
 
-For real data, use the schema in `docs/input_formats.md`. Keep all available within-section neighboring cells, including cells without annotations. No paper data or pretrained scVI reference encoder is embedded in the example.
+To train the other coordinate, change `--target crypt_villus` to `--target epithelial_distance` and choose a new output directory. The [training guide](../docs/retraining.md) also covers Peyer’s patch classification.
+
+For real data, follow the [input format](../docs/input_formats.md). Keep unannotated neighboring cells in the input.

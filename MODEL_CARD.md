@@ -1,19 +1,34 @@
-# TissueMapper-Graph model card
+# TissueMapper-Graph
 
-TissueMapper-Graph supplies GPL-3.0-only training and inference code, without pretrained graph weights. Two coordinate regressors map expression features and within-section spatial neighborhoods to normalized [0, 1] outputs. Each uses two GATConv layers, ELU, dropout and sigmoid output. The separately trained BinaryGAT Peyer classifier produces a scalar logit. Input dimensionality and architecture settings are saved in each user's checkpoint; classification also stores training-section feature normalization and the prespecified decision threshold.
+## Model
 
-The paper used 30-dimensional scVI features, 64 hidden features, four first-layer attention heads and dropout 0.1 for coordinate regression. Its separate classifier used 128 hidden features, four heads, dropout 0.15 and a frozen threshold of 0.95. Dense visualization maps come from all-label fits and are not held-out performance estimates. Manuscript graph evaluation uses eight section-disjoint folds; the jointly learned scVI representation remains a feature-lineage limitation. Those frozen results are retained for figure reproduction, without distributing the graph checkpoint binaries.
+Two graph attention regressors predict crypt–villus position and epithelial distance from expression features and spatial neighbors. Outputs range from 0 to 1.
 
-## Graph identity
+Each regressor has two GATConv layers with ELU, dropout, and a sigmoid output. A separate BinaryGAT classifier predicts Peyer’s patch probability.
 
-The historical paper-v1 coordinate graph construction selected non-self neighbor ranks 2–21: the original sklearn call already excluded self, then removed its first returned neighbor. Compatibility code preserves that recorded policy for previously saved checkpoints. Sections with 21 or fewer cells are rejected under this policy.
+The paper used 30 scVI features, 64 hidden features, four first-layer attention heads, and dropout of 0.1 for coordinate models. The classifier used 128 hidden features, four heads, dropout of 0.15, and a threshold of 0.95.
 
-New training uses ordinary nearest-neighbor construction (knn), symmetrized edges and GATConv self loops. The historical paper-peyer-v1 policy matches the original classifier's cKDTree query and symmetrization. Checkpoints record their policy; inference never silently changes it. These distinctions do not revise the frozen paper results.
+## Spatial graph
 
-## Intended use and limitations
+New models use the nearest 20 non-self neighbors within each section. Edges are symmetrized, and GATConv adds self-loops.
 
-Research mapping of intestinal tissue, with study-specific training and anatomical validation. Save the fitted feature encoder used for training and reuse it for inference. Independently fitting another scVI encoder changes the feature basis even at the same dimensionality. The paper's original encoder is not needed for the supported workflow of training your own models.
+Historical checkpoints record one of two older policies:
 
-Spatial neighbors affect predictions, so dropping unannotated surrounding cells changes the result. Gates, probability calibration and performance can shift with specimen preparation, expression panels and tissue domain. This is not a clinical diagnostic device.
+- `paper-v1`: coordinate models used neighbor ranks 2–21. The original code removed the first neighbor after self had already been excluded. This policy requires more than 21 cells per section.
+- `paper-peyer-v1`: the classifier used a cKDTree query followed by edge symmetrization.
 
-Training and inference write input/output hashes and configuration in provenance JSON. Models can be saved and reused locally. The absence of downloadable graph checkpoints is an intentional release policy, not a missing dependency.
+Inference uses the policy recorded in the checkpoint.
+
+## Use on new data
+
+Train on your own expression features and annotations. Save the fitted scVI encoder, gene order, and preprocessing settings with the model. Reuse them for prediction.
+
+Include unannotated neighboring cells. Their features affect predictions.
+
+Validate anatomical gates and classifier calibration in each study. Tissue preparation, gene panels, and anatomy can affect performance. This software is intended for research.
+
+## Paper evaluation
+
+Coordinate performance was evaluated across eight section-disjoint folds. scVI features were learned jointly across sections, which limits the independence of that evaluation. Dense maps use models fitted on all annotations and serve as visualizations.
+
+The figure bundle contains saved predictions and metrics. Graph checkpoint files are excluded from the release.

@@ -1,10 +1,9 @@
-# Release candidate status
+# Release status
 
-The GPL-3.0-only release candidate includes uv-locked CPU/GPU installs, own-data coordinate/classifier training and inference, synthetic examples, and complete paper rendering code. The source is hosted in the private `amonell/TissueMapper-Graph` GitHub repository. Graph weights are not distributed. See `VALIDATION.md` for executed local tests and GitHub Actions for hosted checks. This is not a public release.
+Code is available at [amonell/TissueMapper-Graph](https://github.com/amonell/TissueMapper-Graph). The repository is private and uses GPL-3.0-only.
 
-Before public release:
+Training, prediction, and CPU/GPU installation have been tested. GitHub Actions runs the CPU tests on each push. See [Tests](VALIDATION.md).
 
-- Obtain authorization to change the repository from private to public.
-- Upload the verified paper-input bundle after confirming permission to redistribute it.
+Graph models are trained on your own data. Figure rendering requires the separate paper-input bundle.
 
-The original development repository is preserved separately. History-free source exports omit Git metadata. Synthetic tutorials are not paper evaluations. The original paper scVI encoder is not a release requirement: users train their own feature encoder and graph models.
+Before making the repository public, confirm permission and hosting for the figure data.

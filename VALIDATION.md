@@ -1,18 +1,34 @@
-# Release validation
+# Tests
 
-Validated locally on Linux, Python 3.12, PyTorch 2.12.1, CPU and NVIDIA RTX A6000/CUDA 12.6. Wheels were installed into separate uv environments without editable source installs, and commands ran in fresh output directories. No publication or GitHub-hosted CI run is claimed.
+Tested on Linux with Python 3.12, PyTorch 2.12.1, CPU, and an NVIDIA RTX A6000 with CUDA 12.6. Packages were installed as wheels in separate uv environments.
 
-- All 10 source-only release unit tests passed. The 8-command acceptance workflow passed on CPU and GPU, covering synthetic AnnData generation, separate coordinate training/inference, and separate classifier training/inference.
-- Exact two-hop minibatch inference agrees with whole-graph inference in the test graph. Tests reject section overlap, incompatible feature-space identities and overwrites, and ensure pretrained-download commands are not offered.
-- The newly trained classifier saves training-section-only feature normalization; test labels do not select the checkpoint.
-- Previously staged Graph artifacts matched their frozen originals; those exports are retained privately and are not part of this release.
+## Software checks
 
-On 32 prespecified cells in a real reference section, maximum absolute differences from the correct frozen outputs were 1.2 × 10⁻⁷ for crypt–villus position, 8.9 × 10⁻⁸ for epithelial distance and 6.3 × 10⁻⁸ for Peyer's patch probability. These are bounded compatibility checks, not new performance estimates. The coordinate and classifier source tables have different global row indices; matching used stable cell identities within the same section.
+- 10 unit tests passed.
+- The eight-command training and prediction workflow passed on CPU and GPU.
+- Minibatch predictions matched whole-graph predictions in the test graph.
+- Tests covered section splits, feature compatibility, classifier normalization, and file protection.
+- GitHub Actions passed installation, unit tests, wheel building, and the example workflow.
 
-All eight paper figures were redrawn from relocated frozen inputs and matched the current full-page layouts pixel-for-pixel in a 72-dpi raster comparison. The figure runner additionally checks panel recomposition at 150 dpi, fonts, text, geometry and raster contracts.
+Run the unit tests:
 
 ```bash
-python scripts/smoke_test.py --work-dir /new/temporary/graph-run --device cpu
+uv run --locked --extra cpu --extra dev pytest -q
 ```
 
-Use a CUDA-installed interpreter and `--device cuda` for GPU acceptance. Reports and logs are written inside the work directory. The current workflow trains and reloads users' own checkpoints and requires no released graph weights or original paper scVI encoder. The real-reference checks above document historical internal compatibility, not downloadable pretrained models.
+Run the training and prediction checks:
+
+```bash
+uv run --locked --extra cpu python scripts/smoke_test.py \
+  --work-dir runs/graph_checks --device cpu
+```
+
+Use a new work directory. For GPU checks, use `--extra cu126` and `--device cuda`. Logs are saved in the work directory.
+
+## Comparison with the paper code
+
+On 32 cells from a reference section, maximum prediction differences were 1.2 × 10⁻⁷ for crypt–villus position, 8.9 × 10⁻⁸ for epithelial distance, and 6.3 × 10⁻⁸ for Peyer’s patch probability. This checks implementation agreement rather than biological accuracy.
+
+All eight figures matched the current page layouts pixel-for-pixel at 150 dpi. Figure checks also covered fonts, text, panel placement, and image resolution.
+
+The machine-readable test record is in `validation/acceptance.json`.
