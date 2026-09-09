@@ -1,0 +1,6 @@
+# Source-only Graph release; pretrained downloads belong to TissueMapper-Image.
+release: 1.0.0rc1
+publication_status: pending_author_upload
+code_license: GPL-3.0-only
+pretrained_weights_distributed: false
+data_license: pending_author_confirmation

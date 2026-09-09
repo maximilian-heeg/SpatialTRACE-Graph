@@ -1,0 +1,6 @@
+TissueMapper-Graph is distributed under the GNU General Public License,
+version 3 only (SPDX-License-Identifier: GPL-3.0-only). See LICENSE.
+
+This release supplies training and inference software, without pretrained
+graph weights. Users can train and save their own models. Frozen figure data
+and third-party dependencies retain their separately stated terms.

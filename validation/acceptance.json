@@ -1,0 +1,300 @@
+{
+  "validated_at": "2026-09-09T23:01:27.068673+00:00",
+  "operating_system": "Linux",
+  "python": "3.12.12",
+  "torch": "2.12.1",
+  "gpu": "NVIDIA RTX A6000",
+  "cuda_runtime": "12.6",
+  "wheel": {
+    "filename": "tissuemapper_graph-1.0.0rc1-py3-none-any.whl",
+    "sha256": "9926f560988e31bf35c259602cabab550d697672b06e323de6d36a99cf28c86c"
+  },
+  "import_package": "spatial_axis_gat",
+  "installation": "wheel, not editable; separate CPU and CUDA uv environments",
+  "unit_tests_passed": 10,
+  "acceptance": {
+    "cpu": [
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "--help"
+        ],
+        "seconds": 0.02835731627419591,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "create-demo",
+          "--output",
+          "demo.h5ad"
+        ],
+        "seconds": 5.035399047192186,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "crypt_villus",
+          "--output-dir",
+          "crypt_villus",
+          "--epochs",
+          "3",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.180817043874413,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "crypt_villus/model.pt",
+          "--output",
+          "crypt_villus/predictions.csv",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.369575690012425,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "epithelial_distance",
+          "--output-dir",
+          "epithelial_distance",
+          "--epochs",
+          "3",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.256486881989986,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "epithelial_distance/model.pt",
+          "--output",
+          "epithelial_distance/predictions.csv",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.034719526302069,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "peyer_label",
+          "--task",
+          "peyer",
+          "--output-dir",
+          "peyer",
+          "--epochs",
+          "3",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.249716555699706,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "peyer/model.pt",
+          "--output",
+          "peyer/predictions.csv",
+          "--device",
+          "cpu"
+        ],
+        "seconds": 5.126973261125386,
+        "exit_code": 0
+      }
+    ],
+    "cuda": [
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "--help"
+        ],
+        "seconds": 0.02972285682335496,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "create-demo",
+          "--output",
+          "demo.h5ad"
+        ],
+        "seconds": 5.632378675043583,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "crypt_villus",
+          "--output-dir",
+          "crypt_villus",
+          "--epochs",
+          "3",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.429565742146224,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "crypt_villus/model.pt",
+          "--output",
+          "crypt_villus/predictions.csv",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.317777039017528,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "epithelial_distance",
+          "--output-dir",
+          "epithelial_distance",
+          "--epochs",
+          "3",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.236551179084927,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "epithelial_distance/model.pt",
+          "--output",
+          "epithelial_distance/predictions.csv",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.2479427037760615,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "train",
+          "--input",
+          "demo.h5ad",
+          "--target",
+          "peyer_label",
+          "--task",
+          "peyer",
+          "--output-dir",
+          "peyer",
+          "--epochs",
+          "3",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.385127553250641,
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "-m",
+          "spatial_axis_gat.cli",
+          "predict",
+          "--input",
+          "demo.h5ad",
+          "--checkpoint",
+          "peyer/model.pt",
+          "--output",
+          "peyer/predictions.csv",
+          "--device",
+          "cuda"
+        ],
+        "seconds": 6.0780612719245255,
+        "exit_code": 0
+      }
+    ]
+  },
+  "license": "GPL-3.0-only",
+  "pretrained_weights_distributed": false,
+  "limitations": "Small execution/compatibility checks, not new biological accuracy estimates. No hosted GitHub CI or public artifact URL is claimed."
+}

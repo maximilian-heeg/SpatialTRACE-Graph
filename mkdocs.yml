@@ -1,0 +1,10 @@
+site_name: TissueMapper-Graph
+site_description: Research software for intestinal anatomical mapping.
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Inputs: input_formats.md
+  - Training: retraining.md
+  - Artifacts: artifacts.md
+theme:
+  name: mkdocs
