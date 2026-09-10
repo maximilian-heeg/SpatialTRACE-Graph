@@ -1,6 +1,6 @@
 # TissueMapper-Graph
 
-Predict crypt–villus position, epithelial distance, and Peyer’s patch probability from spatial transcriptomics. Train models on your own scVI features and anatomical annotations.
+Map tissue organization from spatial transcriptomics. Train graph attention models to learn anatomical coordinates or identify tissue regions from expression features, spatial neighbors, and your annotations.
 
 ## Install
 
@@ -33,7 +33,9 @@ uv run --locked --extra cpu tissuemapper-graph predict \
 
 ## Use your data
 
-Prepare an AnnData file with expression features, cell coordinates, section IDs, and annotations. See the [input format](docs/input_formats.md) and [training guide](docs/retraining.md).
+Prepare an AnnData file with expression features, cell coordinates, section IDs, and annotations for the coordinates or regions you want to map. See the [input format](docs/input_formats.md) and [training guide](docs/retraining.md).
+
+The paper uses intestinal tissue as an example. Training targets can be defined for your tissue.
 
 Graph models are trained on your data. Pretrained image models are available in [TissueMapper-Image](https://github.com/amonell/TissueMapper-Image).
 

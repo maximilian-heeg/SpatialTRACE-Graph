@@ -2,11 +2,11 @@
 
 ## Model
 
-Two graph attention regressors predict crypt–villus position and epithelial distance from expression features and spatial neighbors. Outputs range from 0 to 1.
+A graph attention regressor learns an anatomical coordinate from expression features, spatial neighbors, and annotations. Outputs range from 0 to 1. Train a separate regressor for each coordinate.
 
-Each regressor has two GATConv layers with ELU, dropout, and a sigmoid output. A separate BinaryGAT classifier predicts Peyer’s patch probability.
+Each regressor has two GATConv layers with ELU, dropout, and a sigmoid output. A separate binary classifier learns region labels.
 
-The paper used 30 scVI features, 64 hidden features, four first-layer attention heads, and dropout of 0.1 for coordinate models. The classifier used 128 hidden features, four heads, dropout of 0.15, and a threshold of 0.95.
+The paper developed and evaluated the models in intestinal tissue, using crypt–villus position, epithelial distance, and Peyer’s patch labels. Coordinate models used 30 scVI features, 64 hidden features, four first-layer attention heads, and dropout of 0.1. The classifier used 128 hidden features, four heads, dropout of 0.15, and a threshold of 0.95.
 
 ## Spatial graph
 

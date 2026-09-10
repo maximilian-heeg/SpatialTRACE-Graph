@@ -4,7 +4,7 @@ Prepare the [AnnData input](input_formats.md). Assign each section to training, 
 
 ## Coordinate models
 
-Train each coordinate separately:
+Define a coordinate for your tissue and scale its annotations from 0 to 1. Pass its column name with `--target`. Train each coordinate separately; the commands below use the paper’s intestinal coordinates as examples:
 
 ```bash
 uv run --locked --extra cpu tissuemapper-graph train \
@@ -26,7 +26,9 @@ uv run --locked --extra cpu tissuemapper-graph predict \
   --output runs/crypt_predictions.csv --device cpu
 ```
 
-## Peyer’s patch classifier
+## Region classification
+
+Use binary labels to mark a region of interest. The example below classifies Peyer’s patches. For another region, replace `peyer_label` with your label column; `--task peyer` selects the binary classifier.
 
 Add a `peyer_label` column with binary labels or probabilities from 0 to 1. Use NaN for unannotated cells.
 

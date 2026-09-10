@@ -12,7 +12,7 @@ Use an AnnData `.h5ad` file with unique cell IDs in `obs_names`.
 | `obs["crypt_villus"]` | Labels from 0 to 1; NaN for unannotated cells |
 | `obs["epithelial_distance"]` | Labels from 0 to 1; NaN for unannotated cells |
 
-The split and label fields are required for training. For Peyer’s patch classification, add `obs["peyer_label"]` with labels from 0 to 1.
+The split and label fields are required for training. The coordinate names above come from the paper example. Use `--target` to select your own annotation column. For region classification, provide binary labels or probabilities from 0 to 1.
 
 Keep spatial units consistent within each section. Include surrounding unannotated cells so the model can use their features.
 
