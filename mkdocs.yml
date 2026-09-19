@@ -1,4 +1,4 @@
-site_name: TissueMapper-Graph
+site_name: SpatialTRACE-Graph
 site_description: Learn anatomical coordinates and tissue regions from spatial transcriptomics.
 nav:
   - Home: index.md

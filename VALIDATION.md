@@ -31,4 +31,4 @@ On 32 cells from a reference section, maximum prediction differences were 1.2 ×
 
 All eight figures matched the current page layouts pixel-for-pixel at 150 dpi. Figure checks also covered fonts, text, panel placement, and image resolution.
 
-The machine-readable test record is in `validation/acceptance.json`.
+The SpatialTRACE release checks are in `validation/spatialtrace_rename.json`. The original implementation comparison is in `validation/acceptance.json`.

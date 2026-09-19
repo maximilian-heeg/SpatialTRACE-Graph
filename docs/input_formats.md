@@ -18,4 +18,4 @@ Keep spatial units consistent within each section. Include surrounding unannotat
 
 Give each fitted encoder a name, such as `my-study-scvi-v1`. Save the encoder, gene order, and preprocessing settings with the model. Reuse them when predicting on new cells: a newly fitted scVI encoder produces a different feature space.
 
-Use `tissuemapper-graph train --help` to change the default column names.
+Use `spatialtrace-graph train --help` to change the default column names.

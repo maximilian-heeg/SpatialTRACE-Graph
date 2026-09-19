@@ -1,4 +1,4 @@
-# TissueMapper-Graph
+# SpatialTRACE-Graph
 
 ## Model
 

@@ -22,7 +22,7 @@ from .graph import build_batch_spatial_edge_index
 from .metrics import regression_metrics
 from .model import GATModel
 
-FORMAT = "tissuemapper-graph/v1"
+FORMAT = "tissuemapper-graph/v1"  # Stable checkpoint identifier for existing models.
 
 
 def provenance(path, args, inputs, outputs):
@@ -36,7 +36,7 @@ def provenance(path, args, inputs, outputs):
     Path(path).write_text(json.dumps(dict(
         timestamp_utc=datetime.now(timezone.utc).isoformat(), command=sys.argv,
         configuration=vars(args), python=platform.python_version(),
-        packages={name: importlib.metadata.version(name) for name in ['tissuemapper-graph', 'torch', 'torch-geometric', 'numpy', 'scikit-learn']},
+        packages={name: importlib.metadata.version(name) for name in ['spatialtrace-graph', 'torch', 'torch-geometric', 'numpy', 'scikit-learn']},
         inputs=[record(p) for p in inputs], outputs=[record(p) for p in outputs]), default=str, indent=2))
 
 
@@ -86,7 +86,7 @@ class Neighborhoods:
 def load_checkpoint(path, device="cpu"):
     payload = torch.load(path, map_location="cpu", weights_only=True)
     if payload.get("format") != FORMAT:
-        raise ValueError("Use a TissueMapper-Graph release checkpoint or train output")
+        raise ValueError("Use a SpatialTRACE-Graph release checkpoint or train output")
     cfg = payload["model_config"]
     if payload.get("task", "coordinate") == "peyer":
         from .peyer import BinaryGAT

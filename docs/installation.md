@@ -4,7 +4,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/). In the re
 
 ```bash
 uv sync --locked --extra cpu
-uv run --locked --extra cpu tissuemapper-graph --help
+uv run --locked --extra cpu spatialtrace-graph --help
 ```
 
 uv installs Python 3.12 and the versions listed in `uv.lock`.

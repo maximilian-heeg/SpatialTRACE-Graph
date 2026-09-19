@@ -1,6 +1,6 @@
 [project]
-name = "tissuemapper-graph"
-version = "1.0.0rc1"
+name = "spatialtrace-graph"
+version = "1.0.0rc2"
 description = "Graph attention models for anatomical coordinates from spatial transcriptomics."
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
@@ -33,6 +33,7 @@ figures = ["pypdf>=6", "reportlab>=4", "pymupdf>=1.26", "seaborn>=0.13", "statsm
 expression = ["scvi-tools>=1.4,<1.5"]
 
 [project.scripts]
+spatialtrace-graph = "spatial_axis_gat.cli:main"
 tissuemapper-graph = "spatial_axis_gat.cli:main"
 
 [build-system]

@@ -1,10 +1,10 @@
-"""TissueMapper-Graph command line."""
+"""SpatialTRACE-Graph command line."""
 import argparse
 from pathlib import Path
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="tissuemapper-graph")
+    parser = argparse.ArgumentParser(prog="spatialtrace-graph")
     sub = parser.add_subparsers(dest="command", required=True)
     demo = sub.add_parser("create-demo", help="Write a self-contained synthetic tutorial dataset")
     demo.add_argument("--output", type=Path, required=True)

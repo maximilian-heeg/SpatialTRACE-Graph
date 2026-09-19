@@ -1,4 +1,6 @@
-# TissueMapper-Graph
+# SpatialTRACE-Graph
+
+TRACE stands for Tissue Region and Axis Coordinate Estimation.
 
 Map tissue organization from spatial transcriptomics. Train graph attention models with your own coordinate or region annotations.
 

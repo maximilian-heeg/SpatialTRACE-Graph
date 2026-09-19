@@ -1,6 +1,6 @@
 # Release status
 
-Code is available at [amonell/TissueMapper-Graph](https://github.com/amonell/TissueMapper-Graph). The repository is private and uses GPL-3.0-only.
+Code is available at [SpatialTRACE-Graph](https://github.com/maximilian-heeg/TissueMapper-Graph). The repository is private and uses GPL-3.0-only.
 
 Training, prediction, and CPU/GPU installation have been tested. GitHub Actions runs the CPU tests on each push. See [Tests](VALIDATION.md).
 

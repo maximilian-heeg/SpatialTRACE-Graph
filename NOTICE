@@ -1,4 +1,4 @@
-TissueMapper-Graph is distributed under the GNU General Public License,
+SpatialTRACE-Graph is distributed under the GNU General Public License,
 version 3 only (SPDX-License-Identifier: GPL-3.0-only). See LICENSE.
 
 This release supplies training and inference software, without pretrained

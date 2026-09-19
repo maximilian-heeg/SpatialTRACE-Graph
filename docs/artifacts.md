@@ -7,6 +7,6 @@ Training saves:
 - `split.csv`: training, validation, and test assignments.
 - Metrics and provenance files: performance, settings, input hashes, and package versions.
 
-Keep these files with your fitted scVI encoder and preprocessing settings. Use `tissuemapper-graph predict` to apply the saved model to compatible features.
+Keep these files with your fitted scVI encoder and preprocessing settings. Use `spatialtrace-graph predict` to apply the saved model to compatible features.
 
 Graph weights are trained on your own annotations. The figure workflow uses saved paper predictions and metrics supplied separately.
