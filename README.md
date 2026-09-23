@@ -9,7 +9,7 @@ Map tissue organization from spatial transcriptomics. Train graph attention mode
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 
 ```bash
-gh repo clone maximilian-heeg/TissueMapper-Graph SpatialTRACE-Graph
+gh repo clone maximilian-heeg/SpatialTRACE-Graph
 cd SpatialTRACE-Graph
 uv sync --locked --extra cpu
 ```
