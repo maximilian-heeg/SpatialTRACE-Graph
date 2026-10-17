@@ -4,7 +4,7 @@ Render all eight figures from saved predictions, metrics, images, and schematic 
 
 ## Paper version
 
-Use commit `3fe6207eb1d1c237e5006df4aff445532dcad409` with the [frozen figure inputs on Zenodo](https://doi.org/10.5281/zenodo.23442009). The [paper release record](paper_release.json) lists the commit and checksums.
+Use commit `e8832c6d49fad0703c7429d4dc0068ced2add2c1` with the [frozen figure inputs on Zenodo](https://doi.org/10.5281/zenodo.23442009). The [paper release record](paper_release.json) lists the commit and checksums.
 
 ## Setup
 
@@ -17,7 +17,7 @@ sha256sum -c ARCHIVE_SHA256.txt
 unzip SpatialTRACE-paper-figure-inputs-v2.zip
 ```
 
-The archive is 17.7 GB and expands to `spatialtrace_paper_bundle_2026-10-17` (about 30.4 GB). Install Poppler (`poppler-utils` on Debian or Ubuntu) and Arial fonts.
+The archive is 6.58 GB and expands to `spatialtrace_paper_bundle_2026-10-17` (about 15.9 GB). Install Poppler (`poppler-utils` on Debian or Ubuntu) and Arial fonts.
 
 Then install the Python packages:
 
