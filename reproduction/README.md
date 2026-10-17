@@ -2,9 +2,22 @@
 
 Render all eight figures from saved predictions, metrics, images, and schematic artwork.
 
+## Paper version
+
+Use commit `3fe6207eb1d1c237e5006df4aff445532dcad409` with the [frozen figure inputs on Zenodo](https://doi.org/10.5281/zenodo.23442009). The [paper release record](paper_release.json) lists the commit and checksums.
+
 ## Setup
 
-Get `paper_bundle_v3` from the authors (15.3 GB). Install Poppler (`poppler-utils` on Debian or Ubuntu) and Arial fonts.
+Download the ZIP parts, `SHA256SUMS.txt`, `ARCHIVE_SHA256.txt`, `README.md`, and `LICENSE` from Zenodo. Check, join, and extract the archive:
+
+```bash
+sha256sum -c SHA256SUMS.txt
+cat SpatialTRACE-paper-figure-inputs-v2.zip.*.part > SpatialTRACE-paper-figure-inputs-v2.zip
+sha256sum -c ARCHIVE_SHA256.txt
+unzip SpatialTRACE-paper-figure-inputs-v2.zip
+```
+
+The archive is 17.7 GB and expands to `spatialtrace_paper_bundle_2026-10-17` (about 30.4 GB). Install Poppler (`poppler-utils` on Debian or Ubuntu) and Arial fonts.
 
 Then install the Python packages:
 
@@ -20,10 +33,12 @@ Check the inputs, then render:
 
 ```bash
 uv run --locked --extra cpu --extra figures python reproduction/render.py \
-  --bundle /path/to/paper_bundle_v3 --output-dir runs/paper --verify-only
+  --bundle /path/to/spatialtrace_paper_bundle_2026-10-17 \
+  --output-dir runs/paper --verify-only
 
 uv run --locked --extra cpu --extra figures python reproduction/render.py \
-  --bundle /path/to/paper_bundle_v3 --output-dir runs/paper
+  --bundle /path/to/spatialtrace_paper_bundle_2026-10-17 \
+  --output-dir runs/paper
 ```
 
 Use a new output directory for each run. Input checksums must match the supplied bundle.
